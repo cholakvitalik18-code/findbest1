@@ -1,0 +1,14 @@
+# Normalise line endings: LF in the repo, LF in every working copy.
+# The server runs on Linux (Render); keeping checkouts LF avoids churn.
+* text=auto eol=lf
+
+# Windows launcher must stay CRLF to run under cmd.exe.
+*.bat text eol=crlf
+
+# Binary assets: never touch.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.ico binary
+*.sqlite binary
