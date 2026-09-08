@@ -1,0 +1,17 @@
+{
+  "name": "findbest-ultimate",
+  "version": "2.1.0",
+  "private": true,
+  "description": "FindBest.de smart product comparison with Telegram support and price alerts",
+  "scripts": {
+    "start": "node server.js",
+    "check": "node scripts/check.js",
+    "test": "node --test test/*.test.js",
+    "dev": "node scripts/dev.js",
+    "build": "npm run check",
+    "lint": "npm run check"
+  },
+  "engines": {
+    "node": ">=22.13.0"
+  }
+}

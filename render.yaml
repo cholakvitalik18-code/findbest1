@@ -1,0 +1,55 @@
+# Render Blueprint for FindBest.de
+# In Render: New -> Blueprint -> connect this repo. It creates the web service
+# and the persistent disk. Fill the "sync: false" secrets in the dashboard.
+# See DEPLOYMENT_RU.md for details.
+services:
+  - type: web
+    name: findbest
+    runtime: node
+    plan: starter            # a paid instance is required to attach a disk
+    branch: main
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    autoDeploy: true
+    disk:
+      name: findbest-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: NODE_VERSION
+        value: 22.13.0
+      - key: NODE_ENV
+        value: production
+      # --- Reviews storage (persistent disk) ---
+      - key: REVIEWS_PERSISTENT_STORAGE
+        value: "true"
+      - key: REVIEWS_DATA_DIR
+        value: /var/data/findbest
+      - key: REVIEWS_SECRET
+        generateValue: true   # 256-bit random value; do not change it later
+      - key: REVIEWS_ADMIN_PASSWORD
+        sync: false           # choose a 32-128 char password
+      - key: PUBLIC_SITE_URL
+        sync: false           # https://<your-service>.onrender.com
+      # --- Search providers ---
+      - key: SERPER_API_KEY
+        sync: false
+      - key: EBAY_CLIENT_ID
+        sync: false
+      - key: EBAY_CLIENT_SECRET
+        sync: false
+      # --- Telegram (optional) ---
+      - key: TELEGRAM_BOT_USERNAME
+        sync: false
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: TELEGRAM_OWNER_ID
+        sync: false
+      # --- Tuning ---
+      - key: SEARCH_LOCATION
+        value: Germany
+      - key: CACHE_TTL_SECONDS
+        value: "180"
+      - key: ALERT_CHECK_MINUTES
+        value: "360"

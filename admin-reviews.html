@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="ru" data-theme="light"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0961d9">
+<title>Модерация отзывов — FindBest</title>
+<meta name="description" content="Отзывы пользователей о FindBest: рейтинг сервиса, реальные впечатления и возможность поделиться своим опытом.">
+<meta name="robots" content="noindex,nofollow">
+<script src="assets/js/storage.js?v=21"></script>
+<script>(()=>{document.documentElement.lang=['ru','uk','de','en'].includes(FBStorage.getItem('fb_lang'))?FBStorage.getItem('fb_lang'):'ru';document.documentElement.dataset.theme=FBStorage.getItem('fb_theme')||((matchMedia('(prefers-color-scheme:dark)').matches)?'dark':'light')})();</script>
+<link rel="stylesheet" href="assets/css/reviews.css?v=21"><link rel="stylesheet" href="assets/css/mobile.css?v=22">
+<script src="assets/js/site-ui.js?v=21" defer></script><script src="assets/js/review-copy.js?v=21" defer></script><script src="assets/js/reviews.js?v=21" defer></script>
+</head><body data-page="admin">
+<header><div class="container nav"><a class="logo" href="index.html"><span class="logo-mark" aria-hidden="true">⌕</span><span>Find<b>Best</b>.de</span></a><div class="nav-spacer"></div><a class="nav-link" href="index.html" data-ui="home">Главная</a><a class="nav-link" href="favorites.html" data-ui="favorites">Избранное</a><button class="theme-toggle" type="button" id="themeToggle" aria-label="Сменить тему">◐</button></div></header>
+<main id="main-content" class="container reviews-main"><section class="reviews-hero"><span class="review-eyebrow">FINDBEST / ADMIN</span><h1 data-r="adminTitle"></h1><p data-r="adminSub"></p></section>
+<p id="adminMessage" role="status" tabindex="-1"></p>
+<form id="adminLogin" class="review-panel admin-login"><label for="adminPassword" data-r="password"></label><input id="adminPassword" type="password" minlength="32" maxlength="128" autocomplete="current-password" required><button class="btn" type="submit" data-r="login"></button></form>
+<section id="adminArea" hidden><div class="review-toolbar"><label class="sr-only" for="adminStatus" data-r="sort"></label><select id="adminStatus"><option value="pending" data-r="pendingTab"></option><option value="published" data-r="publishedTab"></option><option value="hidden" data-r="hiddenTab"></option></select><button id="adminLogout" class="review-secondary" type="button" data-r="logout"></button></div><div id="adminList"></div><div id="reviewPagination" class="review-pagination"></div></section>
+<dialog id="deleteDialog" class="review-delete" aria-labelledby="delete-title"><h2 id="delete-title" data-r="deleteTitle"></h2><p data-r="deleteText"></p><div class="review-actions"><button id="deleteCancel" class="review-secondary" data-r="cancel"></button><button id="deleteConfirm" class="review-danger" data-r="delete"></button></div></dialog></main>
+<footer><div class="container footer-row"><a class="logo" href="index.html">Find<b>Best</b>.de</a><a href="reviews.html" data-ui="reviews">Отзывы</a><span class="footer-copy">© 2026 FindBest.de</span></div></footer>
+</body></html>

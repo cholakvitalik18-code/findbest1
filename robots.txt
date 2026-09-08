@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://findbest-inx1.onrender.com/sitemap.xml
