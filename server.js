@@ -37,7 +37,8 @@ const BOT_USER = String(process.env.TELEGRAM_BOT_USERNAME || '').replace(/^@/, '
 const ALERT_MINUTES = Math.max(60, Number(process.env.ALERT_CHECK_MINUTES || 360));
 const cache = new Map();
 // Search text is not retained as analytics.
-const alertStore = createAlertStore(__dirname);
+const ALERTS_DATA_DIR = process.env.REVIEWS_DATA_DIR || path.join(__dirname, 'data');
+const alertStore = createAlertStore(ALERTS_DATA_DIR);
 let ebayToken = null;
 let ebayTokenUntil = 0;
 const searchLimit = createRateLimiter({ windowMs: 5 * 60 * 1000, max: 24 });
@@ -171,5 +172,5 @@ if (require.main === module) {
   setTimeout(() => checkAlerts().catch(() => {}), 60_000).unref();
   setInterval(() => checkAlerts().catch(() => {}), ALERT_MINUTES * 60 * 1000).unref();
 }
-server.on('close', () => reviewsApi.close());
+server.on('close', () => { reviewsApi.close(); alertStore.close(); });
 module.exports = { server, dedupeAndRank, liveSearch };
